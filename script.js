@@ -22,6 +22,48 @@ const PLAYLISTS = [
   },
 ];
 
+// books served from ./content, manifest in books.json (regenerate with ./update-books.sh)
+fetch("books.json")
+  .then((r) => r.json())
+  .then((books) => {
+    const bookList = document.getElementById("book-list");
+    if (!bookList) return;
+
+    books.forEach((book) => {
+      const li = document.createElement("li");
+      li.className = "post-item";
+
+      const a = document.createElement("a");
+      a.className = "post-link";
+      a.href = "content/" + encodeURIComponent(book.file);
+      a.download = book.file;
+
+      const title = document.createElement("h3");
+      title.className = "post-title";
+      title.textContent = book.title;
+
+      const meta = document.createElement("p");
+      meta.className = "post-meta";
+
+      const tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = "#pdf";
+
+      const size = document.createElement("span");
+      size.className = "date";
+      size.textContent = book.size;
+
+      meta.append(tag, size);
+      a.append(title, meta);
+      li.append(a);
+      bookList.append(li);
+    });
+  })
+  .catch(() => {
+    const status = document.getElementById("book-status");
+    if (status) status.textContent = "error: books.json not found";
+  });
+
 function renderList(items, listId) {
   const listEl = document.getElementById(listId);
   if (!listEl) return;
@@ -60,7 +102,6 @@ function renderList(items, listId) {
 renderList(POSTS, "post-list");
 renderList(PROJECTS, "project-list");
 renderList(PODCASTS, "podcast-list");
-renderList(BOOKS, "book-list");
 renderList(PLAYLISTS, "playlist-list");
 
 // typing effect
