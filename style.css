@@ -1,0 +1,252 @@
+:root {
+  --bg: #0a0e0c;
+  --bg-soft: #101613;
+  --fg: #c8d6c9;
+  --dim: #5f7a64;
+  --accent: #33ff66;
+  --accent-soft: rgba(51, 255, 102, 0.12);
+  --warn: #ffd23f;
+  --border: #1c2a20;
+  --mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+/* CRT scanlines overlay */
+.scanlines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 3px,
+    transparent 4px
+  );
+  mix-blend-mode: multiply;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1100px;
+  padding: 4.5rem 2.5rem 3rem;
+}
+
+/* ---------- hero ---------- */
+
+.prompt-line {
+  font-size: 0.85rem;
+  color: var(--dim);
+  margin-bottom: 2.5rem;
+  min-height: 1.2em;
+}
+
+.prompt .user { color: var(--accent); }
+.prompt .host { color: var(--fg); font-weight: 600; }
+
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  background: var(--accent);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.title {
+  font-size: clamp(2.6rem, 8vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+  text-shadow: 0 0 24px rgba(51, 255, 102, 0.25);
+}
+
+.title .accent {
+  color: var(--accent);
+}
+
+.subtitle {
+  margin-top: 0.75rem;
+  color: var(--dim);
+  font-size: 1rem;
+}
+
+.links {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.link:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(51, 255, 102, 0.3);
+}
+
+/* ---------- section buttons ---------- */
+
+.section-nav {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.82rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  transition: all 0.15s ease;
+}
+
+.btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 12px rgba(51, 255, 102, 0.3);
+}
+
+/* ---------- posts ---------- */
+
+.posts {
+  margin-top: 4.5rem;
+}
+
+.section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+.section-status {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--dim);
+}
+
+.section-status:empty {
+  display: none;
+}
+
+.post-list {
+  list-style: none;
+  border-left: 2px solid var(--border);
+}
+
+.post-item {
+  position: relative;
+  padding: 0.9rem 0 0.9rem 1.5rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.post-item::before {
+  content: ">";
+  position: absolute;
+  left: -0.5em;
+  color: var(--dim);
+  opacity: 0;
+  transition: opacity 0.15s ease, left 0.15s ease;
+}
+
+.post-item:hover::before {
+  opacity: 1;
+  left: -0.65em;
+  color: var(--accent);
+}
+
+.post-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.post-item:hover .post-title {
+  color: var(--accent);
+}
+
+.post-meta {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  color: var(--dim);
+}
+
+.post-meta .tag {
+  color: var(--warn);
+}
+
+.post-meta .date {
+  text-transform: lowercase;
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--dim);
+}
+
+.muted {
+  opacity: 0.6;
+}
+
+/* ---------- selection ---------- */
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; }
+  html { scroll-behavior: auto; }
+}

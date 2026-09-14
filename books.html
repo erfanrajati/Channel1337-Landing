@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Books — Channel1337</title>
+  <meta name="description" content="Channel1337 — notes on code, security, and the in-between." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,800;1,400&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <header class="hero">
+      <p class="prompt-line">
+        <span class="prompt"><span class="user">guest</span>@<span class="host">channel1337</span>:~$</span>
+        <span id="typed"></span><span class="cursor" aria-hidden="true"></span>
+      </p>
+
+      <h1 class="title">channel<span class="accent">1337</span></h1>
+      <p class="subtitle">// notes on code, security, and the in-between</p>
+
+      <nav class="links" aria-label="social links">
+        <a href="https://youtube.com/@channel1337net" class="link" target="_blank" rel="noopener">[ youtube ]</a>
+        <a href="https://t.me/channel1337net" class="link" target="_blank" rel="noopener">[ telegram ]</a>
+      </nav>
+
+      <nav class="section-nav" aria-label="site sections">
+        <a class="btn" href="index.html">home</a>
+        <a class="btn" href="posts.html">posts</a>
+        <a class="btn" href="projects.html">projects</a>
+        <a class="btn" href="playlists.html">playlists</a>
+        <a class="btn" href="podcasts.html">podcasts</a>
+      </nav>
+    </header>
+
+    <section class="posts" id="books" aria-label="books">
+      <h2 class="section-title">$ ls ./books</h2>
+      <ul class="post-list" id="book-list"></ul>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2026 channel1337 — <span class="muted">exit 0</span></p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
