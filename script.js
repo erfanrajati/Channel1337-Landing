@@ -2,8 +2,6 @@ const POSTS = [];
 
 const PROJECTS = [];
 
-const PODCASTS = [];
-
 const BOOKS = [];
 
 // baked-in from youtube.com/@channel1337net/playlists on 2026-09-14
@@ -22,47 +20,54 @@ const PLAYLISTS = [
   },
 ];
 
-// books served from ./content, manifest in books.json (regenerate with ./update-books.sh)
-fetch("books.json")
+// content catalog in content.json (regenerate with ./update-books.sh)
+// books live in ./content/books, podcasts in ./content/podcasts;
+// each entry: { id, file, title, size, description } — description points to a markdown file
+fetch("content.json")
   .then((r) => r.json())
-  .then((books) => {
-    const bookList = document.getElementById("book-list");
-    if (!bookList) return;
-
-    books.forEach((book) => {
-      const li = document.createElement("li");
-      li.className = "post-item";
-
-      const a = document.createElement("a");
-      a.className = "post-link";
-      a.href = "content/" + encodeURIComponent(book.file);
-      a.download = book.file;
-
-      const title = document.createElement("h3");
-      title.className = "post-title";
-      title.textContent = book.title;
-
-      const meta = document.createElement("p");
-      meta.className = "post-meta";
-
-      const tag = document.createElement("span");
-      tag.className = "tag";
-      tag.textContent = "#pdf";
-
-      const size = document.createElement("span");
-      size.className = "date";
-      size.textContent = book.size;
-
-      meta.append(tag, size);
-      a.append(title, meta);
-      li.append(a);
-      bookList.append(li);
-    });
+  .then(({ books = [], podcasts = [] }) => {
+    renderContentItems(books, "book-list", "content/books/", "pdf");
+    renderContentItems(podcasts, "podcast-list", "content/podcasts/", "podcast");
   })
   .catch(() => {
     const status = document.getElementById("book-status");
-    if (status) status.textContent = "error: books.json not found";
+    if (status) status.textContent = "error: content.json not found";
   });
+
+function renderContentItems(items, listId, base, tag) {
+  const bookList = document.getElementById(listId);
+  if (!bookList) return;
+
+  items.forEach((book) => {
+    const li = document.createElement("li");
+    li.className = "post-item";
+
+    const a = document.createElement("a");
+    a.className = "post-link";
+    a.href = base + encodeURIComponent(book.file);
+    a.download = book.file;
+
+    const title = document.createElement("h3");
+    title.className = "post-title";
+    title.textContent = book.title;
+
+    const meta = document.createElement("p");
+    meta.className = "post-meta";
+
+    const tagEl = document.createElement("span");
+    tagEl.className = "tag";
+    tagEl.textContent = `#${tag}`;
+
+    const size = document.createElement("span");
+    size.className = "date";
+    size.textContent = book.size;
+
+    meta.append(tagEl, size);
+    a.append(title, meta);
+    li.append(a);
+    bookList.append(li);
+  });
+}
 
 function renderList(items, listId) {
   const listEl = document.getElementById(listId);
@@ -101,7 +106,6 @@ function renderList(items, listId) {
 
 renderList(POSTS, "post-list");
 renderList(PROJECTS, "project-list");
-renderList(PODCASTS, "podcast-list");
 renderList(PLAYLISTS, "playlist-list");
 
 // typing effect

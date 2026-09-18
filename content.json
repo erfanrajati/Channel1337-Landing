@@ -1,0 +1,138 @@
+{
+  "books": [
+    {
+      "id": "6d0a1d8c-aaab-462a-bc5a-2fa092ade661",
+      "file": "A Tour of C++ - Bjarne Stroustrup (Addison-Wesley, 2014)(193p).pdf",
+      "title": "A Tour of C++ - Bjarne Stroustrup (Addison-Wesley, 2014)(193p)",
+      "size": "0.8 MB",
+      "description": "content/books/descriptions/6d0a1d8c-aaab-462a-bc5a-2fa092ade661.md"
+    },
+    {
+      "id": "1b369af3-68b6-49f2-bbdf-ecbbadf60765",
+      "file": "Architectural Metapatterns.pdf",
+      "title": "Architectural Metapatterns",
+      "size": "55.0 MB",
+      "description": "content/books/descriptions/1b369af3-68b6-49f2-bbdf-ecbbadf60765.md"
+    },
+    {
+      "id": "62fa9b5b-16c0-4966-94c8-872e8b437917",
+      "file": "Effective_Modern_C++_Scott_Meyers.pdf",
+      "title": "Effective Modern C++ Scott Meyers",
+      "size": "4.8 MB",
+      "description": "content/books/descriptions/62fa9b5b-16c0-4966-94c8-872e8b437917.md"
+    },
+    {
+      "id": "34838fcd-38dd-4d6f-ae27-a7c7d54f95f3",
+      "file": "FoundationsOfProgramming.pdf",
+      "title": "FoundationsOfProgramming",
+      "size": "1.3 MB",
+      "description": "content/books/descriptions/34838fcd-38dd-4d6f-ae27-a7c7d54f95f3.md"
+    },
+    {
+      "id": "37a80b62-fb8b-480c-aba9-261584f30295",
+      "file": "How Linux Works - Brian Ward.pdf",
+      "title": "How Linux Works - Brian Ward",
+      "size": "4.6 MB",
+      "description": "content/books/descriptions/37a80b62-fb8b-480c-aba9-261584f30295.md"
+    },
+    {
+      "id": "80833e83-a2fd-40b3-8e7a-4a558c03fbd3",
+      "file": "Monolith.to.Microservices.Sam.Newman.pdf",
+      "title": "Monolith.to.Microservices.Sam.Newman",
+      "size": "11.0 MB",
+      "description": "content/books/descriptions/80833e83-a2fd-40b3-8e7a-4a558c03fbd3.md"
+    },
+    {
+      "id": "3fd09b64-7bb6-4f2b-b513-f677cc732a2b",
+      "file": "OReilly.Fundamentals.of.Software.Architecture.2020.1.pdf",
+      "title": "OReilly.Fundamentals.of.Software.Architecture.2020.1",
+      "size": "23.5 MB",
+      "description": "content/books/descriptions/3fd09b64-7bb6-4f2b-b513-f677cc732a2b.md"
+    },
+    {
+      "id": "21e243d7-b058-4a8e-9777-2323737b9654",
+      "file": "System_Design_Interview_An_Insiders_Guide_2nd_Edition.pdf",
+      "title": "System Design Interview An Insiders Guide 2nd Edition",
+      "size": "21.9 MB",
+      "description": "content/books/descriptions/21e243d7-b058-4a8e-9777-2323737b9654.md"
+    },
+    {
+      "id": "d4a35f45-0390-49b1-8e9f-45389128c4b8",
+      "file": "System_Design_Interview__An_Insiders_Guide_Volume_2.pdf",
+      "title": "System Design Interview  An Insiders Guide Volume 2",
+      "size": "23.7 MB",
+      "description": "content/books/descriptions/d4a35f45-0390-49b1-8e9f-45389128c4b8.md"
+    },
+    {
+      "id": "62449f1b-3800-4a93-91dc-f59c5b5c72a8",
+      "file": "The C++ Programming Language, 4th Edition by Stroustrup B..pdf",
+      "title": "The C++ Programming Language, 4th Edition by Stroustrup B.",
+      "size": "4.1 MB",
+      "description": "content/books/descriptions/62449f1b-3800-4a93-91dc-f59c5b5c72a8.md"
+    },
+    {
+      "id": "46be0168-9a0b-48c5-ae68-8f482c2a7e19",
+      "file": "WEF_Future_of_Jobs_Report_2025.pdf",
+      "title": "WEF Future of Jobs Report 2025",
+      "size": "17.7 MB",
+      "description": "content/books/descriptions/46be0168-9a0b-48c5-ae68-8f482c2a7e19.md"
+    },
+    {
+      "id": "9197f283-108d-4eee-9609-18826660c20a",
+      "file": "cryptography-and-network-security_-principles-and-practice-7th-global-edition.pdf",
+      "title": "cryptography-and-network-security -principles-and-practice-7th-global-edition",
+      "size": "9.0 MB",
+      "description": "content/books/descriptions/9197f283-108d-4eee-9609-18826660c20a.md"
+    },
+    {
+      "id": "ba54e9e7-f4ce-496a-98ef-59dd8ef39284",
+      "file": "go.pdf",
+      "title": "go",
+      "size": "0.2 MB",
+      "description": "content/books/descriptions/ba54e9e7-f4ce-496a-98ef-59dd8ef39284.md"
+    },
+    {
+      "id": "19006a4c-4c76-45ab-81b7-124c2eb833a0",
+      "file": "justforfun_persian.pdf",
+      "title": "justforfun persian",
+      "size": "0.7 MB",
+      "description": "content/books/descriptions/19006a4c-4c76-45ab-81b7-124c2eb833a0.md"
+    },
+    {
+      "id": "6cdabefa-2b53-4834-8d9d-e4ae3b309fab",
+      "file": "luciano-ramalho-fluent-python_-clear-concise-and-effective-programming-oreilly-media-2022.pdf",
+      "title": "luciano-ramalho-fluent-python -clear-concise-and-effective-programming-oreilly-media-2022",
+      "size": "15.7 MB",
+      "description": "content/books/descriptions/6cdabefa-2b53-4834-8d9d-e4ae3b309fab.md"
+    },
+    {
+      "id": "bda6957b-fac8-44a5-b70e-187cc5562300",
+      "file": "redis.pdf",
+      "title": "redis",
+      "size": "0.2 MB",
+      "description": "content/books/descriptions/bda6957b-fac8-44a5-b70e-187cc5562300.md"
+    },
+    {
+      "id": "dd4f38fe-da5b-4c2c-a107-339a37710365",
+      "file": "scaling-viki.pdf",
+      "title": "scaling-viki",
+      "size": "0.2 MB",
+      "description": "content/books/descriptions/dd4f38fe-da5b-4c2c-a107-339a37710365.md"
+    },
+    {
+      "id": "9f544661-209a-49bb-af33-ea4d054ddb15",
+      "file": "software-architecture-patterns.pdf",
+      "title": "software-architecture-patterns",
+      "size": "5.3 MB",
+      "description": "content/books/descriptions/9f544661-209a-49bb-af33-ea4d054ddb15.md"
+    },
+    {
+      "id": "a80c7dda-7b26-41c9-b408-bbfbb8f86011",
+      "file": "the-illusion-of-thinking.pdf",
+      "title": "the-illusion-of-thinking",
+      "size": "13.2 MB",
+      "description": "content/books/descriptions/a80c7dda-7b26-41c9-b408-bbfbb8f86011.md"
+    }
+  ],
+  "podcasts": []
+}
