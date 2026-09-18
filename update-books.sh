@@ -1,33 +1,45 @@
 #!/usr/bin/env bash
-# Regenerates content.json from the files in ./content/books — run after adding/removing books.
+# Regenerates content.json from the files in ./content/books and ./content/podcasts.
 # Keeps each entry's id (and thus its description path) stable across runs.
-# Descriptions live in content/books/descriptions/<id>.md — write one for each new book.
+# Book titles are derived from the pdf filename; podcast titles/descriptions are
+# kept from existing entries (edit them in content.json, they survive reruns).
+# Descriptions live in content/{books,podcasts}/descriptions/<id>.md — write one per new item.
 set -euo pipefail
 cd "$(dirname "$0")"
 
 node -e '
 const fs = require("fs");
+const path = require("path");
 const crypto = require("crypto");
 
 const DB = "content.json";
 const db = fs.existsSync(DB) ? JSON.parse(fs.readFileSync(DB, "utf8")) : { books: [], podcasts: [] };
-const byFile = new Map(db.books.map((b) => [b.file, b]));
 
-const files = fs.readdirSync("content/books").filter((f) => f.toLowerCase().endsWith(".pdf")).sort();
-const books = files.map((f) => {
-  const prev = byFile.get(f);
-  const size = fs.statSync("content/books/" + f).size;
-  const title = f.replace(/\.pdf$/i, "").replace(/_/g, " ").trim();
-  const id = prev?.id ?? crypto.randomUUID();
-  return {
-    id,
-    file: f,
-    title,
-    size: (size / 1024 / 1024).toFixed(1) + " MB",
-    description: prev?.description ?? "content/books/descriptions/" + id + ".md",
-  };
-});
+function scan(dir, entries, exts, entryFor) {
+  const prev = new Map(entries.map((e) => [e.file, e]));
+  return fs
+    .readdirSync(dir)
+    .filter((f) => exts.includes(path.extname(f).toLowerCase()))
+    .sort()
+    .map((f) => entryFor(f, prev.get(f), fs.statSync(dir + "/" + f).size, crypto.randomUUID()));
+}
 
-fs.writeFileSync(DB, JSON.stringify({ books, podcasts: db.podcasts ?? [] }, null, 2) + "\n");
-console.log("wrote content.json with", books.length, "books and", (db.podcasts ?? []).length, "podcasts");
+const books = scan("content/books", db.books, [".pdf"], (f, prev, size, id) => ({
+  id: prev?.id ?? id,
+  file: f,
+  title: f.replace(/\.pdf$/i, "").replace(/_/g, " ").trim(),
+  size: (size / 1024 / 1024).toFixed(1) + " MB",
+  description: prev?.description ?? "content/books/descriptions/" + (prev?.id ?? id) + ".md",
+}));
+
+const podcasts = scan("content/podcasts", db.podcasts ?? [], [".mp3", ".m4a", ".wav", ".ogg", ".aac", ".flac"], (f, prev, size, id) => ({
+  id: prev?.id ?? id,
+  file: f,
+  title: prev?.title ?? f.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").trim(),
+  size: (size / 1024 / 1024).toFixed(1) + " MB",
+  description: prev?.description ?? "content/podcasts/descriptions/" + (prev?.id ?? id) + ".md",
+}));
+
+fs.writeFileSync(DB, JSON.stringify({ books, podcasts }, null, 2) + "\n");
+console.log("wrote content.json with", books.length, "books and", podcasts.length, "podcasts");
 '

@@ -134,5 +134,13 @@
       "description": "content/books/descriptions/a80c7dda-7b26-41c9-b408-bbfbb8f86011.md"
     }
   ],
-  "podcasts": []
+  "podcasts": [
+    {
+      "id": "a6eea03e-a482-4026-ac7f-0072bab92261",
+      "file": "radio-1337-ep-01-replacement-or-redefinition.m4a",
+      "title": "Radio 1337 — Ep. 1: Replacement or Redefinition?",
+      "size": "29.7 MB",
+      "description": "content/podcasts/descriptions/a6eea03e-a482-4026-ac7f-0072bab92261.md"
+    }
+  ]
 }
